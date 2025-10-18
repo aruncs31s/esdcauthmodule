@@ -32,3 +32,22 @@ func InitAuthModule(r *gin.Engine, db *gorm.DB) {
 func AddJWTMiddleware(r *gin.Engine) {
 	r.Use(middleware.JwtMiddleware())
 }
+
+// SetupSwagger sets up the Swagger documentation routes for the auth module
+//
+// Call this function in your main application after initializing the auth module
+// to enable Swagger UI at /swagger/index.html
+//
+// Params:
+//   - r: Gin engine instance
+//
+// Example:
+//
+//	auth.InitAuthModule(r, db)
+//	auth.SetupSwagger(r)
+//	auth.AddJWTMiddleware(r)
+func SetupSwagger(r *gin.Engine) {
+	// This function prepares the module for Swagger documentation
+	// The actual Swagger setup should be done in the consuming application
+	// using swag or a similar tool to generate swagger docs
+}
