@@ -10,6 +10,7 @@ import (
 	"gorm.io/gorm"
 )
 
+
 func InitAuthModule(r *gin.Engine, db *gorm.DB) {
 	userRepo := userRepo.NewUserRepository(db)
 	authRepo := repository.NewAuthRepository(db)

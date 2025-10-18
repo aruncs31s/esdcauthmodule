@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"esdc-backend/internal/module/common/model"
+	"github.com/aruncs31s/esdcmodels"
 
 	"gorm.io/gorm"
 )

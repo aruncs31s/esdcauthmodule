@@ -95,7 +95,7 @@ func (s *authServiceWriter) Register(user dto.RegisterRequest) error {
 		Role:     "user", // Default role
 		Password: user.Password,
 		Github: &model.Github{
-			Username: user.GithubUsername,
+			Username: getGithubUsername(user.GithubUsername),
 		},
 		CreatedAt: time.Time{}.Unix(),
 		UpdatedAt: time.Time{}.Unix(),
@@ -105,4 +105,10 @@ func (s *authServiceWriter) Register(user dto.RegisterRequest) error {
 		return err
 	}
 	return nil
+}
+func getGithubUsername(username string) string {
+	if username == "" {
+		return "anonymous"
+	}
+	return username
 }
