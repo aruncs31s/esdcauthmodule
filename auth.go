@@ -1,3 +1,17 @@
+// @title Auth Module API
+// @version 1.0
+// @description Authentication and authorization API
+// @termsOfService http://swagger.io/terms/
+
+// @contact.name API Support
+// @contact.url http://www.swagger.io/support
+// @contact.email support@swagger.io
+
+// @license.name Apache 2.0
+// @license.url http://www.apache.org/licenses/LICENSE-2.0.html
+
+// @host localhost:8080
+// @BasePath /api
 package auth
 
 import (
@@ -17,12 +31,20 @@ import (
 //   - r: Gin engine instance
 //   - db: GORM database instance
 func InitAuthModule(r *gin.Engine, db *gorm.DB) {
+	// Create User Repo
 	userRepo := userRepo.NewUserRepository(db)
+	// Create Auth Repo
 	authRepo := repository.NewAuthRepository(db)
+	// Create JWT Service
 	jwtService := service.NewJWTService()
+	// Create Auth Service and Handler
 	authService := service.NewAuthService(authRepo, userRepo, jwtService)
 	authHandler := handler.NewAuthHandler(authService)
+	// Register Auth Routes
 	routes.RegisterAuthRoutes(r, authHandler)
+	// Register Auth Swagger Routes
+	routes.RegisterAuthSwaggerRoutes(r)
+
 }
 
 // AddJWTMiddleware adds the JWT middleware to the Gin engine
@@ -31,23 +53,4 @@ func InitAuthModule(r *gin.Engine, db *gorm.DB) {
 //   - r: Gin engine instance
 func AddJWTMiddleware(r *gin.Engine) {
 	r.Use(middleware.JwtMiddleware())
-}
-
-// SetupSwagger sets up the Swagger documentation routes for the auth module
-//
-// Call this function in your main application after initializing the auth module
-// to enable Swagger UI at /swagger/index.html
-//
-// Params:
-//   - r: Gin engine instance
-//
-// Example:
-//
-//	auth.InitAuthModule(r, db)
-//	auth.SetupSwagger(r)
-//	auth.AddJWTMiddleware(r)
-func SetupSwagger(r *gin.Engine) {
-	// This function prepares the module for Swagger documentation
-	// The actual Swagger setup should be done in the consuming application
-	// using swag or a similar tool to generate swagger docs
 }
