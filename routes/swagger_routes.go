@@ -1,7 +1,6 @@
 package routes
 
 import (
-	"github.com/aruncs31s/esdcauthmodule/docs"
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
@@ -16,9 +15,6 @@ import (
 //
 // This will make the auth module docs available at: /auth-docs/swagger/index.html
 func RegisterAuthSwaggerRoutes(r *gin.Engine) {
-	// Initialize swagger docs
-	_ = docs.SwaggerInfo
-
 	authDocsGroup := r.Group("/auth-docs")
 	{
 		// Serve Swagger UI

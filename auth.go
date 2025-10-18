@@ -42,9 +42,6 @@ func InitAuthModule(r *gin.Engine, db *gorm.DB) {
 	authHandler := handler.NewAuthHandler(authService)
 	// Register Auth Routes
 	routes.RegisterAuthRoutes(r, authHandler)
-	// Register Auth Swagger Routes
-	routes.RegisterAuthSwaggerRoutes(r)
-
 }
 
 // AddJWTMiddleware adds the JWT middleware to the Gin engine
