@@ -36,7 +36,7 @@ func NewAuthHandler(authService service.AuthService) AuthHandler {
 // @Success 200 {object} map[string]interface{} "Login successful"
 // @Failure 400 {object} map[string]interface{} "Bad request"
 // @Failure 500 {object} map[string]interface{} "Internal server error"
-// @Router /login [post]
+// @Router /api/user/login [post]
 func (h *authHandler) Login(c *gin.Context) {
 	loginData, failed := utils.GetJSONData[dto.LoginRequest](c, h.responseHelper, utils.ErrBadRequest.Error(), utils.ErrDetailBadRequestJSONPayload.Error())
 	if failed {
@@ -61,7 +61,7 @@ func (h *authHandler) Login(c *gin.Context) {
 // @Success 200 {object} map[string]interface{} "Registration successful"
 // @Failure 400 {object} map[string]interface{} "Bad request"
 // @Failure 500 {object} map[string]interface{} "Internal server error"
-// @Router /register [post]
+// @Router /api/user/register [post]
 func (h *authHandler) Register(c *gin.Context) {
 	registerData, failed := utils.GetJSONData[dto.RegisterRequest](c, h.responseHelper, "Bad request", "Invalid request payload")
 	if failed {

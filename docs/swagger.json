@@ -18,7 +18,7 @@
     "host": "localhost:8080",
     "basePath": "/api",
     "paths": {
-        "/login": {
+        "/api/user/login": {
             "post": {
                 "description": "Authenticate user with email and password",
                 "consumes": [
@@ -67,7 +67,7 @@
                 }
             }
         },
-        "/register": {
+        "/api/user/register": {
             "post": {
                 "description": "Register a new user account",
                 "consumes": [

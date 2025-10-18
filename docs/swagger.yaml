@@ -62,7 +62,7 @@ info:
   title: Auth Module API
   version: "1.0"
 paths:
-  /login:
+  /api/user/login:
     post:
       consumes:
       - application/json
@@ -95,7 +95,7 @@ paths:
       summary: User login
       tags:
       - auth
-  /register:
+  /api/user/register:
     post:
       consumes:
       - application/json

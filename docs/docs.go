@@ -24,7 +24,7 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/login": {
+        "/api/user/login": {
             "post": {
                 "description": "Authenticate user with email and password",
                 "consumes": [
@@ -73,7 +73,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/register": {
+        "/api/user/register": {
             "post": {
                 "description": "Register a new user account",
                 "consumes": [
