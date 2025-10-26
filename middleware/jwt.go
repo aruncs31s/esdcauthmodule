@@ -56,11 +56,9 @@ func JwtMiddleware() gin.HandlerFunc {
 			// Set username in context for handlers to use
 			username := claims["username"]
 			role := claims["role"]
-			c.Set("user", username)
 			c.Set("username", username)
 			c.Set("role", role)
 		}
-
 		c.Next()
 	}
 }

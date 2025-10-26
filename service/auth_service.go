@@ -75,7 +75,7 @@ func (s *authServiceReader) Login(email, password string) (string, error) {
 	if err != nil {
 		return "", utils.ErrUserNotExists
 	}
-
+	
 	if user.Password != password {
 		return "", utils.ErrPasswordDoesNotMatch
 	}
