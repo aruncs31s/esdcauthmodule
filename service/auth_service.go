@@ -75,7 +75,7 @@ func (s *authServiceReader) Login(email, password string) (string, error) {
 	if err != nil {
 		return "", utils.ErrUserNotExists
 	}
-	
+
 	if user.Password != password {
 		return "", utils.ErrPasswordDoesNotMatch
 	}
@@ -97,8 +97,8 @@ func (s *authServiceWriter) Register(user dto.RegisterRequest) error {
 		Github: &model.Github{
 			Username: getGithubUsername(user.GithubUsername),
 		},
-		CreatedAt: time.Time{}.Unix(),
-		UpdatedAt: time.Time{}.Unix(),
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
 	}
 	err := s.userRepo.CreateUser(newUser)
 	if err != nil {
