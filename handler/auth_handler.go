@@ -1,9 +1,11 @@
 package handler
 
 import (
+	"github.com/aruncs31s/azf/shared/logger"
 	"github.com/aruncs31s/esdcauthmodule/dto"
 	"github.com/aruncs31s/esdcauthmodule/service"
 	"github.com/aruncs31s/esdcauthmodule/utils"
+	"go.uber.org/zap"
 
 	"github.com/aruncs31s/responsehelper"
 	"github.com/gin-gonic/gin"
@@ -46,7 +48,9 @@ func (h *authHandler) Login(c *gin.Context) {
 	if failed {
 		return
 	}
-	data := map[string]string{"token": token}
+	data := dto.TokenResponse{
+		Token: token,
+	}
 
 	h.responseHelper.Success(c, data)
 }
@@ -79,6 +83,10 @@ func (h *authHandler) Register(c *gin.Context) {
 }
 
 func getToken(h *authHandler, email string, password string, c *gin.Context) (string, bool) {
+	logger.GetLogger().Info("Generating token for user:",
+		zap.String("Email: ", email),
+		zap.String("Password", password),
+	)
 	token, err := h.authService.Login(email, password)
 	if err != nil {
 		h.responseHelper.InternalError(c, "Could not login after registration", err)
