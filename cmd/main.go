@@ -43,10 +43,10 @@ func main() {
 		c.Next()
 	})
 
-	// Initialize AZF Authorization Framework with all features
-	// This includes: authorization, usage tracking, admin UI
-	auth.InitFullAZF(r, db, nil) // Pass nil for Casbin enforcer to use default
-
+	// // Initialize AZF Authorization Framework with all features
+	// // This includes: authorization, usage tracking, admin UI
+	// auth.InitFullAZF(r, db, nil) // Pass nil for Casbin enforcer to use default
+	//
 	// Protected routes go here
 	r.GET("/api/protected", func(c *gin.Context) {
 		c.JSON(200, gin.H{"message": "protected resource"})

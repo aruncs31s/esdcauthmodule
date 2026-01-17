@@ -15,6 +15,7 @@ type AuthHandler interface {
 	Login(c *gin.Context)
 	Register(c *gin.Context)
 }
+
 type authHandler struct {
 	authService    service.AuthService
 	responseHelper responsehelper.ResponseHelper
